@@ -3,8 +3,8 @@
  */
 
 
-#ifndef STDOUT_CMD_H
-#define STDOUT_CMD_H
+#ifndef FMT_STDOUT_H
+#define FMT_STDOUT_H
 #include <stdio.h>
 #include <string.h>
 

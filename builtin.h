@@ -7,6 +7,7 @@
 #include "look.h"
 #include "enter.h"
 #include "open.h"
+#include "fmt_stdout.h"
 
 
 struct cmd_struct;

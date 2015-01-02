@@ -17,7 +17,10 @@ int main(int argc, char *av[])
         if (cmd)
             handle_builtin(cmd, argc, argv);
         else
-            printf("%s\n", "Unknown command");
+            fmt_write("%s\n", "Unknown command", "RED");
+    } else {
+        /* This should show the user the valid commands. */
+        fmt_write("%s\n", "Please enter a command", "RED");
     }
     return 0;
 }
