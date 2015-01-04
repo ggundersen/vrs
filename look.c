@@ -1,7 +1,7 @@
 #include "look.h"
 
 
-void look_cmd(int argc, const char ** argv)
+void look_cmd(int argc, const char **argv)
 {
     /* Get the user's current working directory. */
     char cwd[1024];
@@ -18,6 +18,7 @@ void look_cmd(int argc, const char ** argv)
     regex_t regex;
     int reti;
     reti = regcomp(&regex, "[^.].vrs", 0);
+    fmt_write("%s\n", "What you see", "RED");
     for (struct dirent *de = NULL; (de = readdir(d)) != NULL;) {
         reti = regexec(&regex, de->d_name, 0, NULL, 0);
         if (!reti) {
@@ -26,7 +27,7 @@ void look_cmd(int argc, const char ** argv)
         }
     }
     if (found == 0)
-        fmt_write("%s\n", "There is nothing here.", "RED");
+        fmt_write("\t%s\n", "There is nothing here.", "RED");
 
     closedir(d);
 }
@@ -38,8 +39,9 @@ void read_file(char *filename)
         return;
 
     char contents[BUFSIZ];
-    while (fgets(contents, BUFSIZ, f) != NULL)
-        fmt_write("%s", contents, "YEL");
+    /* This should not be hard coded. It should be VRS_COLOR. */
+        while (fgets(contents, BUFSIZ, f) != NULL)
+        fmt_write("\t%s", contents, "YEL");
 
     fclose(f);
 }

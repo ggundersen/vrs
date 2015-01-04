@@ -1,12 +1,6 @@
 #include "builtin.h"
 
 
-struct cmd_struct {
-    const char *name;
-    /* Pass the user's command line arguments to each command. */
-    void (*fn)(int, const char **);
-};
-
 /*
  * Vrs treats the filesystem as parts of the universe, e.g. people, places,
  * aliens. Vrs's builtin commands delegate to Unix's as necessary.
@@ -18,6 +12,8 @@ struct cmd_struct commands[] = {
     // create a .vrs directory in the current directory.
     // { "init" }
 };
+
+size_t commands_size = ARRAY_SIZE(commands);
 
 struct cmd_struct* get_builtin(int argc, const char *s)
 {
