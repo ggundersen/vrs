@@ -12,6 +12,7 @@
 struct color_struct;
 char *get_color_code(char *color);
 void fmt_write(char *specifier, char *msg, char *color);
+void fmt_write_vrs(char *specifier, char *msg);
 
 
 #endif

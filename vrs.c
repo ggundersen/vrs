@@ -15,9 +15,6 @@
 #include "help.h"
 
 
-/* This variable is in the wrong place. */
-char *VRS_COLOR = "RED";
-
 int main(int argc, char *av[])
 {
     const char **argv = (const char **) av;
@@ -27,9 +24,9 @@ int main(int argc, char *av[])
         if (cmd)
             handle_builtin(cmd, argc, argv);
         else
-            pretty_print_cmdnames(VRS_COLOR);
+            pretty_print_cmdnames();
     } else {
-        fmt_write("%s\n", strdup(VRS_USAGE), VRS_COLOR);
+        fmt_write_vrs("%s\n", strdup(VRS_USAGE));
     }
     return 0;
 }

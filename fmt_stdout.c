@@ -48,3 +48,9 @@ void fmt_write(char *specifier, char *msg, char *color)
     strcat(color_msg, "\0");
     printf(specifier, color_msg);
 }
+
+/* The "voice" of... whatever speaks to the user... is RED. */
+void fmt_write_vrs(char *specifier, char *msg)
+{
+    fmt_write(specifier, msg, "RED");
+}
