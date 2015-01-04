@@ -18,7 +18,7 @@ void look_cmd(int argc, const char **argv)
     regex_t regex;
     int reti;
     reti = regcomp(&regex, "[^.].vrs", 0);
-    fmt_write("%s\n", "What you see", "RED");
+    fmt_write("%s\n", "You see", "RED");
     for (struct dirent *de = NULL; (de = readdir(d)) != NULL;) {
         reti = regexec(&regex, de->d_name, 0, NULL, 0);
         if (!reti) {
