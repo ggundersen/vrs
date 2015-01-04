@@ -9,6 +9,7 @@
  */
 extern struct cmd_struct commands[];
 
+/* TODO: Implement these commands. */
 const char *VRS_USAGE = 
     "usage: vrs [--version]\n"
     "           [--help]";
