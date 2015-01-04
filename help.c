@@ -16,13 +16,13 @@ const char *VRS_USAGE =
 
 const char *VRS_VERSION = "1.0";
 
-void *pretty_print_cmdnames(char *color)
+void *pretty_print_cmdnames()
 {
-    fmt_write("%s\n", "Did you mean one of these?", color);
+    fmt_write_vrs("%s\n", "Did you mean one of these?");
     int i;
     for (i = 0; i < commands_size; i++) {
         struct cmd_struct *p = commands + i;
-        fmt_write("\t%s\n", strdup(p->name), color);
+        fmt_write_vrs("\t%s\n", strdup(p->name));
     }
     return 0;
 }

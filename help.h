@@ -13,7 +13,7 @@
 
 const char *VRS_USAGE;
 const char *VRS_VERSION;
-void *pretty_print_cmdnames(char *color);
+void *pretty_print_cmdnames();
 
 
 #endif

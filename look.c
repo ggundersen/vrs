@@ -3,8 +3,11 @@
 
 void look_cmd(int argc, const char **argv)
 {
-    /* Get the user's current working directory. */
-    char cwd[1024];
+    /*
+     * Get the user's current working directory.
+     * How big should the buffer be and how do I handle overflow?
+     */
+    char cwd[255];
     if (getcwd(cwd, sizeof(cwd)) == NULL)
         return;
 
@@ -18,7 +21,7 @@ void look_cmd(int argc, const char **argv)
     regex_t regex;
     int reti;
     reti = regcomp(&regex, "[^.].vrs", 0);
-    fmt_write("%s\n", "You see", "RED");
+    fmt_write_vrs("%s\n", "You see");
     for (struct dirent *de = NULL; (de = readdir(d)) != NULL;) {
         reti = regexec(&regex, de->d_name, 0, NULL, 0);
         if (!reti) {
@@ -27,7 +30,7 @@ void look_cmd(int argc, const char **argv)
         }
     }
     if (found == 0)
-        fmt_write("\t%s\n", "There is nothing here.", "RED");
+        fmt_write_vrs("\t%s\n", "There is nothing here.");
 
     closedir(d);
 }
