@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "fmt_stdout.h"
+#include "path.h"
 
 
 void look_cmd(int argc, const char ** argv);
