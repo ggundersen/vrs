@@ -12,6 +12,11 @@ char *VRS_PATH_FILE = ".vrspath";
 
 void write_cwd(char *new_cwd)
 {
+    /* 
+     * Write the old cwd to the .vrspath. We do not use this as a reference,
+     * since we can just execute .. but we do it to show the user the
+     * directories name.
+     */
     char old_cwd[255];
     read_cwd(old_cwd);
     FILE *f = fopen(VRS_PATH_FILE, "w");
