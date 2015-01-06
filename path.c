@@ -12,8 +12,11 @@ char *VRS_PATH_FILE = ".vrspath";
 
 void write_cwd(char *new_cwd)
 {
+    char old_cwd[255];
+    read_cwd(old_cwd);
     FILE *f = fopen(VRS_PATH_FILE, "w");
     fprintf(f, "%s\n", new_cwd);
+    fprintf(f, "%s", old_cwd);
     fclose(f);
 }
 
