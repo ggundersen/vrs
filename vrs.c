@@ -15,11 +15,14 @@
 #include "help.h"
 
 
+
+
 int main(int argc, char *av[])
 {
     const char **argv = (const char **) av;
 
     if (argc > 1) {
+        is_vrs_directory();
         struct cmd_struct *cmd = get_builtin(argc, argv[1]);
         if (cmd)
             handle_builtin(cmd, argc, argv);

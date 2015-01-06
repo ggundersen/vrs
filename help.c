@@ -26,3 +26,17 @@ void *pretty_print_cmdnames()
     }
     return 0;
 }
+
+/* Based on its current architecture, Vrs can only run in a root directory with
+ * a .vrs subdirectory. This function just checks that there is a .vrs
+ * subdirectory.
+ */
+void is_vrs_directory()
+{
+    DIR* d = opendir(".vrs");
+    if (d == NULL) {
+        fmt_write_vrs("%s\n", "This is not a valid Vrs directory.");
+        exit(0);
+    }
+    /* Otherwise, do nothing. Program control returns to main(). */
+}
