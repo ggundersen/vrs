@@ -12,7 +12,12 @@ extern struct cmd_struct commands[];
 /* TODO: Implement these commands. */
 const char *VRS_USAGE = 
     "usage: vrs [--version]\n"
-    "           [--help]";
+    "           [--help]\n"
+    "\n"
+    /* This should be automated! Each cmd_struct should have a descriptor. */
+    "Some common Vrs commands are:\n"
+    "\tlook\n"
+    "\tenter";
 
 const char *VRS_VERSION = "1.0";
 
@@ -39,4 +44,9 @@ void is_vrs_directory()
         exit(0);
     }
     /* Otherwise, do nothing. Program control returns to main(). */
+}
+
+void print_usage()
+{
+    fmt_write_vrs("%s\n", strdup(VRS_USAGE));
 }

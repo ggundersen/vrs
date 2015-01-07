@@ -10,11 +10,8 @@
  */
 
 
-#include <string.h>
 #include "builtin.h"
 #include "help.h"
-
-
 
 
 int main(int argc, char *av[])
@@ -25,11 +22,11 @@ int main(int argc, char *av[])
         is_vrs_directory();
         struct cmd_struct *cmd = get_builtin(argc, argv[1]);
         if (cmd)
-            handle_builtin(cmd, argc, argv);
+           handle_builtin(cmd, argc, argv);
         else
             pretty_print_cmdnames();
     } else {
-        fmt_write_vrs("%s\n", strdup(VRS_USAGE));
+        print_usage();
     }
     return 0;
 }
