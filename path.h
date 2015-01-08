@@ -17,6 +17,7 @@
 
 void write_cwd(char *new_cwd);
 char *read_cwd(char *cwd_buff);
+void reset_cwd();
 
 
 #endif

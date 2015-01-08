@@ -9,15 +9,20 @@
  */
 extern struct cmd_struct commands[];
 
-/* TODO: Implement these commands. */
+/* This appears only when the user creates a new Vrs? */
+const char *VRS_INTRO =
+    "oooooo   .  oooo ooooooooo.    .oooooo..o\n" 
+    " `888.  .  .8'  `888  .`Y88. d8P'  . `Y8 \n"
+    ". `888.   .8'  . 888   .d88' Y88bo.     .\n"
+    "   `888. .8'     888ooo88P' . `\"Y8888o.  \n"
+    " .  `888.8'  .   888`88b.     .   `\"Y88b \n"
+    "     `888'    .  888  `88b.  oo  .  .d8P \n"
+    ".     `8'  .    o888o  o888o 8\"\"88888P' .\n"
+    "=========================================";
+
 const char *VRS_USAGE = 
-    "usage: vrs [--version]\n"
-    "           [--help]\n"
-    "\n"
-    /* This should be automated! Each cmd_struct should have a descriptor. */
-    "Some common Vrs commands are:\n"
-    "\tlook\n"
-    "\tenter";
+    "usage: [--version]\n"
+    "       [--help]";
 
 const char *VRS_VERSION = "1.0";
 
@@ -40,7 +45,7 @@ void is_vrs_directory()
 {
     DIR* d = opendir(".vrs");
     if (d == NULL) {
-        fmt_write_vrs("%s\n", "This is not a valid Vrs directory.");
+        fmt_write_vrs("%s\n", "You are not in a Vrs.");
         exit(0);
     }
     /* Otherwise, do nothing. Program control returns to main(). */
@@ -49,4 +54,9 @@ void is_vrs_directory()
 void print_usage()
 {
     fmt_write_vrs("%s\n", strdup(VRS_USAGE));
+}
+
+void print_intro()
+{
+    fmt_write_vrs("%s\n", strdup(VRS_INTRO));
 }

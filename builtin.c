@@ -6,11 +6,11 @@
  * aliens. Vrs's builtin commands delegate to Unix's as necessary.
  */
 struct cmd_struct commands[] = {
-    { "look", look_cmd },
     { "enter", enter_cmd },
-    { "open", open_cmd }
-    // create a .vrs directory in the current directory.
-    // { "init" }
+    { "look", look_cmd },
+    { "open", open_cmd },
+    { "make", make_cmd },
+    { "start", start_cmd }
 };
 
 size_t commands_size = ARRAY_SIZE(commands);
@@ -18,7 +18,7 @@ size_t commands_size = ARRAY_SIZE(commands);
 struct cmd_struct* get_builtin(int argc, const char *s)
 {
     int i;
-    for (i = 0; i < argc; i++) {
+    for (i = 0; i < ARRAY_SIZE(commands); i++) {
         struct cmd_struct *p = commands + i;
         if (strcmp(p->name, s) == 0) {
             return p;

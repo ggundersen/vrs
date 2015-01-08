@@ -8,7 +8,7 @@
  * It should handle that as a separate error, i.e. "Sorry, this is not a valid
  * Universe."
  */
-char *VRS_PATH_FILE = ".vrspath";
+char *VRS_PATH_FILE = ".vrs/path";
 
 void write_cwd(char *new_cwd)
 {
@@ -31,4 +31,13 @@ char *read_cwd(char *cwd_buff)
     fgets(cwd_buff, 80, f);
     fclose(f);
     return cwd_buff;
+}
+
+void reset_cwd()
+{
+    char cwd[255];
+    getcwd(cwd, sizeof(cwd));
+    FILE *f = fopen(VRS_PATH_FILE, "w");
+    fprintf(f, "%s", cwd);
+    fclose(f);
 }

@@ -16,6 +16,7 @@ const char *VRS_VERSION;
 void *pretty_print_cmdnames();
 void is_vrs_directory();
 void print_usage();
+void print_intro();
 
 
 #endif

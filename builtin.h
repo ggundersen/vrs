@@ -4,10 +4,12 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "enter.h"
 #include "fmt_stdout.h"
+#include "enter.h"
 #include "look.h"
 #include "open.h"
+#include "make.h"
+#include "start.h"
 #include "util.h"
 
 

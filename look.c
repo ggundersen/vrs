@@ -37,6 +37,22 @@ void look_cmd(int argc, const char **argv)
             read_file(de->d_name);
         }
     }
+
+    /* Search meta.vrs for a description of places. */
+    DIR *dp;
+    struct dirent *ep;
+    dp = opendir ("./");
+    reti = regcomp(&regex, "meta.vrs", 0);
+    while ((ep = readdir(dp)) != NULL) {
+        if (is_dir(ep->d_name)) {
+            reti = regexec(&regex, ep->d_name, 0, NULL, 0);
+            printf("%s\n", ep->d_name);
+            if (!reti)
+                printf("%s\n", ep->d_name);
+        }
+    }
+    closedir(dp);
+
     if (found == 0)
         fmt_write_vrs("%s\n", "There is nothing here.");
 
